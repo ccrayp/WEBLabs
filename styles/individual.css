@@ -1,0 +1,65 @@
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+#top_left {
+    width: 70%;
+    height: 10%;
+    background: red;
+    float: left;
+}
+
+#top_right {
+    width: 30%;
+    height: 10%;
+    background: orange;
+    margin-left: 70%;
+}
+
+#mid_left {
+    width: 30%;
+    height: 80%;
+    background: steelblue;
+    float: left;
+}
+
+#mid_right {
+    width: 70%;
+    height: 80%;
+    background: yellow;
+    margin-left: 30%;
+}
+
+#bottom {
+    width: 100%;
+    height: 10%;
+    background: green;
+}
+
+#magenta {
+    top: 20%;
+    left: 70%;
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    background: magenta;
+}
+
+#grey {
+    top: 27%;
+    left: 65%;
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    background: grey;
+}
+
+#orange {
+    top: 32%;
+    left: 70%;
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    background: orange;
+}

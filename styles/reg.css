@@ -1,0 +1,137 @@
+body {
+    margin: 0px;
+    background-color: #FEFAE0;
+    font-family: Calibri;
+}
+
+.container {
+    margin: 0px;
+    background-color: #FEFAE0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#regLabelText {
+    margin: 0px;
+}
+
+.main {
+    position: fixed;
+    padding: 10px;
+    border-radius: 15px;
+    top: 10px;
+    right: 10px;
+    color: #DDA15E;
+    background-color: #283618;
+    transition: 0.3s;
+    line-height: 20px;
+}
+
+.regLabel {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.regBlock {
+    background-color: #DDA15E;
+    width: 410px;
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+.birth label, .country label {
+    width: 30%;
+    margin-left: 10px;
+    color: #283618;
+    font-weight: bold;
+}
+
+#birthDate{
+    width: 64.9%;
+}
+
+#country {
+    margin: 5px;
+    width: 82%;
+    height: 33px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 5px;
+}
+
+#phone {
+    margin-bottom: 6px;
+}
+
+input {
+    margin: 5px;
+    width: 390px;
+    height: 25px;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding: 5px;
+}
+
+input:valid {
+    border-color: #4CAF50;
+    background-color: #E8F5E9;
+}
+
+input:invalid {
+    border-color: #F44336;
+    background-color: #FFEBEE;
+}
+
+h1 {
+    color: #30411e;
+    margin: 10px;
+}
+
+.checkboxes {
+    margin-left: 10px;
+}
+
+#privicyPolitics, #userPolitics {
+    width: 15px;
+    height: 15px;
+}
+
+#regButton {
+    color: #DDA15E;
+    background-color: #283618;
+    margin-top: 20px;
+    width: 400px;
+    height: 40px;
+    border: 0;
+    border-radius: 15px;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#regButton:hover {
+    background-color: #364526;
+}
+
+fieldset {
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+    padding-bottom: 5px;
+    border: #283618 2px solid;
+    border-radius: 15px;
+}
+
+legend {
+    margin-left: 10px;
+    background-color: #283618;
+    border-radius: 15px;
+}
+
+legend h1 {
+    color: #DDA15E;
+    font-size: 25px;
+    margin: 5px;
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="../styles/reg.css" />
+  </head>
+  <body>
+    <a href="task1.html"><div class="main">На главную</div></a>
+    <div class="container">
+      <div class="regLabel"><h1 id="regLabelText">Регистрация</h1></div>
+      <div class="regBlock">
+        <form>
+          <fieldset>
+          <legend><h1>Личная информация</h1></legend>
+          <input
+            id="secondName"
+            type="text"
+            placeholder="Фамилия"
+            required
+            title="Введите Вашу фамилию"
+            pattern="[А-ЯЁ][а-яё]+"
+          />
+          <input
+            id="firstName"
+            type="text"
+            placeholder="Имя"
+            required
+            title="Введите Ваше имя"
+            pattern="[А-ЯЁ][а-яё]+"
+          />
+          <input
+            id="otchecsvo"
+            type="text"
+            placeholder="Отчество"
+            required
+            title="Введите Ваше отчество"
+            pattern="[А-ЯЁ][а-яё]+"
+          />
+          <div class="birth">
+            <label>Дата рождения</label>
+            <input
+              id="birthDate"
+              type="date"
+              required
+              title="Введите Вашу дату рождения"
+              min="01-01-1925"
+            />
+          </div>
+          <div class="country">
+            <label>Страна</label>
+            <select id="country" title="Выберите Вашу страну">
+              <option>Россия</option>
+              <option>Азербайджан</option>
+              <option>Армения</option>
+              <option>Беларусь</option>
+              <option>Кыргызстан</option>
+              <option>Молдова</option>
+              <option>Таджикистан</option>
+              <option>Туркменистан</option>
+              <option>Узбекистан</option>
+            </select>
+          </div>
+        </fieldset>
+          <fieldset id="contactFieldSet">
+            <legend><h1>Контактные данные</h1></legend>
+            <input
+              id="email"
+              type="email"
+              placeholder="E-mail"
+              required
+              title="Введите Ваш email"
+            />
+            <input
+              id="phone"
+              type="tel"
+              placeholder="Номер телефона"
+              required
+              title="8-XXX-XXX-XX-XX"
+              pattern="^\d{1}-\d{3}-\d{3}-\d{2}-\d{2}$"
+            />
+          </fieldset>
+          <fieldset>
+          <legend><h1>Пароль</h1></legend>
+          <input
+            id="firstPassword"
+            type="password"
+            placeholder="Придумайте пароль"
+            required
+            title="Придумайте пароль"
+            onkeyup="compare()"
+          />
+          <input
+            id="secondPassword"
+            type="password"
+            placeholder="Повторите введенный пароль"
+            required
+            title="Повторите пароль"
+            onkeyup="compare()"
+          />
+          </fieldset>
+          <fieldset style="padding-bottom: 10px;">
+          <legend><h1>Соглашения</h1></legend>
+          <div class="checkboxes">
+            <input id="privicyPolitics" type="checkbox" required /><label
+              for="privicyPolitics"
+              >Ознакомлен с
+              <a href="policy.html">политикой конфиденциальности</a></label
+            >
+          </div>
+          <div class="checkboxes">
+            <input id="userPolitics" type="checkbox" required /><label
+              for="userPolitics"
+              >Ознакомлен с
+              <a href="policy.html">пользовательским соглашением</a></label
+            >
+          </div>
+          <div>
+          </fieldset>
+            <input id="regButton" type="submit" value="Зарегистрироваться" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="../reg.js" defer></script>
+  </body>
+</html>
