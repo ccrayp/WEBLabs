@@ -1,9 +1,3 @@
-html,
-body {
-  height: 100vh;
-  margin: 0;
-}
-
 #red {
   background-color: red;
 }
@@ -22,4 +16,20 @@ body {
 
 #green {
   background-color: green;
+}
+
+.firstHeight {
+  height: 10vh;
+}
+
+.secondHeight {
+  height: 80vh;
+}
+
+.thirdHeight {
+  height: 10vh;
+}
+
+.multiColor {
+  height: 10vh;
 }
