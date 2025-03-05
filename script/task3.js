@@ -1,7 +1,6 @@
 function checkAnswer(variant, index, questionClass) {
     const array = document.querySelectorAll(questionClass)
     reset(array)
-    variant.classList.remove('none')
     if (array[index] === variant) {
         variant.classList.add('right')
     }

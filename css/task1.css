@@ -15,7 +15,7 @@ fieldset {
     padding: 20px;
     border-radius: 15px;
     border: 1px solid black;
-    background-color: rgba(151, 60, 255, 0.418);
+    background-color: rgb(199, 153, 252);
 }
 
 fieldset input {

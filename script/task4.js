@@ -1,10 +1,7 @@
 function check() {
-    const task1 = document.querySelectorAll('input[name="root"]')
-    const task2 = document.querySelectorAll('input[name="points"]')
-
     let k = 0
-    if (task1[0].checked) k++
-    if (task2[0].checked) k++
+    if (document.querySelectorAll('input[name="root"]')[0].checked) k++
+    if (document.querySelectorAll('input[name="points"]')[0].checked) k++
 
     document.getElementById('answQ').innerHTML = k
 }
