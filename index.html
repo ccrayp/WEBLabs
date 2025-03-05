@@ -67,16 +67,6 @@
                <li class="nav-item">
                  <a class="nav-link" href="#section4"> Что то еще</a>
                </li>              
-               <li class="nav-item dropdown arrow-top">
-                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                   Лабораторные работы
-                 </a>
-                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                   <li><a class="dropdown-item" href="#">Лаба2</a></li>
-                   <li><a class="dropdown-item" href="#">Лаба3</a></li>
-                   <li><a class="dropdown-item" href="#">Лаба4</a></li>
-                 </ul>
-               </li>
              </ul>
            </div>
          </div>
@@ -222,23 +212,24 @@
 
       <!--  section 3-->
       <div id="section3">
-        <div class="container section2">
+        <div class="container col-8">
+          <h1>Обратная связь</h1>
           <form>
-            <div class="mb-3 mt-3">
-              <h1 class="text-center">Обратная связь</h1>
+            <div class="mb-3">
+              <h1 class="text-center"></h1>
               <label for="email" class="form-label">Email:</label>
-              <input type="email" class="form-control validation" id="email" placeholder="Enter email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+              <input type="email" class="form-control validation" id="email" placeholder="Введите email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
             </div>
             <div class="mb-3">
-              <label for="pwd" class="form-label">Пароль:</label>
-              <input type="password" class="form-control validation" id="pwd" placeholder="Enter password" name="pswd" required pattern=".{8,}">
+              <label for="con" class="form-label">Поле ввода текста:</label>
+              <textarea class="form-control validation" id="con" placeholder="Введите текст" name="con" required></textarea>
             </div>
             <div class="form-check mb-3">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                <input class="form-check-input" type="checkbox" name="terms"> Согласен с условиями
               </label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
           </form>
         </div>
       </div>
