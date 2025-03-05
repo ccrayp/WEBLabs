@@ -1,0 +1,23 @@
+button {
+    background-color: rgb(81, 81, 255);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    line-height: 50px;
+    font-size: 30px;
+}
+
+#rating {
+    border: 1px solid rgb(81, 81, 255);
+    border-radius: 10px;
+}
+
+.st {
+    font-size: 60px;
+    cursor: pointer;
+    color: gray; /* начальный цвет */
+}
+
+.selected {
+    color: gold; /* цвет при выборе */
+}
