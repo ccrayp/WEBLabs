@@ -172,7 +172,7 @@
               <div class="col-6 mainSectionItem">
                 <div class="row h-75">
                   <div
-                    class="col-12 d-flex justify-content-center align-items-center"
+                    class="col-12 d-flex justify-content-center align-items-center text-center"
                   >
                     Комнатные ароматизаторы
                   </div>
@@ -366,35 +366,36 @@
         </div>
       </div>
       <!-- Наши клиенты говорят -->
-      <div
-        class="row"
-        style="border-bottom: 1px solid black; border-top: 1px solid black"
-      >
+      <div class="row" style="border: 1px solid black">
         <div
           class="col-6 offset-3 mt-5 d-flex justify-content-center align-items-center"
           style="color: black"
         >
           <div class="text-center">
-            <h5 class="mb-3">Отзывы</h5>
+            <h5 class="mb-3">ОТЗЫВЫ</h5>
             <h1 style="font-size: 50px">Наши клиенты говорят</h1>
-            <p class="p-3" style="font-size: 30px">
+            <p id="feedback" class="p-3" style="font-size: 30px">
               “Заказала цветы онлайн, и это был лучший букет! Он произвел
               впечатление на всех окружающих. Настоятельно рекомендую этот
               цветочный магазин!”
             </p>
-            <button
-              style="
-                background-color: transparent;
-                border: 1px solid rgb(0, 0, 0);
-                line-height: 50px;
-                color: black;
-              "
-              class="mb-5"
-            >
-              <span style="padding-left: 50px; padding-right: 50px">
-                Читать отзывы</span
-              >
-            </button>
+            <div class="row mb-5">
+              <div class="col-4">
+                <button class="col-12 feedbackButton" onclick="prev()">
+                  <span> Предыдущий отзыв</span>
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="col-12 feedbackButton">
+                  <span> Читать отзывы</span>
+                </button>
+              </div>
+              <div class="col-4">
+                <button class="col-12 feedbackButton" onclick="next()">
+                  <span> Следующий отзыв</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
