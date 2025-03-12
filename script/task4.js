@@ -1,8 +1,8 @@
 function check() {
     let k = 0
-    if (document.querySelectorAll('input[name="root"]')[0].checked) k++
-    if (document.querySelectorAll('input[name="points"]')[0].checked) k++
-
+    answers = document.querySelectorAll('input[type="radio"]:checked').forEach((btn) => { 
+        if (btn.id == 'right') k++
+    })
     document.getElementById('answQ').innerHTML = k
 }
 
