@@ -2,6 +2,7 @@ feedback = ["“Заказала цветы онлайн, и это был лу�
 
 let k = 0;
 function prev() {
+    if (k == 0) k = 3
     document.getElementById("feedback").innerHTML = feedback[--k % 3]
 }
 

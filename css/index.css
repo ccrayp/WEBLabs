@@ -66,3 +66,8 @@ a:visited {
     line-height: 50px;
     color: black;
 }
+
+.sliderButton {
+    border: 0;
+    background-color: white;
+}
