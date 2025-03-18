@@ -458,7 +458,7 @@
       </div>
       <!-- Наши клиенты говорят -->
       <div class="row align-items-center" style="border: 1px solid black">
-        <div class="col-lg-3 col-1 d-flex justify-content-end">
+        <!-- <div class="col-lg-3 col-1 d-flex justify-content-end">
           <button class="sliderButton" onclick="prev()" style="padding: 0">
             <img src="/img/prev.webp" style="width: 30px" />
           </button>
@@ -466,30 +466,109 @@
         <div
           class="col-lg-6 col-10 d-flex justify-content-center align-items-center"
           style="color: black"
-        >
-          <div class="text-center">
-            <h5 class="mb-3 mt-5">ОТЗЫВЫ</h5>
-            <h1 style="font-size: 50px">Наши клиенты говорят</h1>
-            <p id="feedback" class="p-3" style="font-size: 30px">
-              “Заказала цветы онлайн, и это был лучший букет! Он произвел
-              впечатление на всех окружающих. Настоятельно рекомендую этот
-              цветочный магазин!”
-            </p>
-            <div class="row mb-5">
-              <div class="col-4 offset-4">
-                <button class="col-12 feedbackButton">
-                  <span>Все отзывы</span>
-                </button>
+        > -->
+        <div class="text-center">
+          <h5 class="mb-3 mt-5">ОТЗЫВЫ</h5>
+          <h1 style="font-size: 50px">Наши клиенты говорят</h1>
+          <!-- The carousel -->
+          <div>
+            <div
+              id="carousel1"
+              class="carousel slide col-12"
+              data-bs-ride="carousel"
+            >
+              <!-- Indicators/dots -->
+              <div class="carousel-indicators">
+                <button
+                  type="button"
+                  data-bs-target="#carousel1"
+                  data-bs-slide-to="0"
+                  class="active"
+                  style="background-color: lightgrey"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carousel1"
+                  data-bs-slide-to="1"
+                  style="background-color: lightgrey"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carousel1"
+                  data-bs-slide-to="2"
+                  style="background-color: lightgrey"
+                ></button>
               </div>
+
+              <!-- The slideshow/carousel -->
+              <div class="carousel-inner" style="font-size: 30px">
+                <div class="carousel-item active">
+                  <p class="mb-5">
+                    “Заказала цветы онлайн, и это был лучший букет! Он
+                    произвел<br />
+                    впечатление на всех окружающих. Настоятельно рекомендую
+                    этот<br />
+                    цветочный магазин!”<br />
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <p class="mb-5">
+                    “Подписка на цветы произвела революцию в моем киевском<br />
+                    отеле! Удобно оформлять букеты и регулярно получать
+                    свежие<br />
+                    букеты. Настоятельно рекомендую для организации<br />
+                    беспроблемных цветочных композиций!”<br />
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <p class="mb-5">
+                    “Заказала цветы онлайн, и это был лучший букет! Он
+                    произвел<br />
+                    впечатление на всех окружающих. Очень рекомендую этот<br />
+                    цветочный магазин!”<br />
+                  </p>
+                </div>
+              </div>
+
+              <!-- Left and right controls/icons -->
+              <button
+                class="carousel-control-prev text-danger"
+                type="button"
+                data-bs-target="#carousel1"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  style="background-color: lightgrey; border-radius: 50%"
+                ></span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carousel1"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  style="background-color: lightgrey; border-radius: 50%"
+                ></span>
+              </button>
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-1">
+        <div class="row mb-5">
+          <div class="col-4 offset-4">
+            <button class="col-12 feedbackButton">
+              <span>Все отзывы</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-lg-3 col-1">
           <button class="sliderButton" onclick="next()" style="padding: 0">
             <img src="/img/next.webp" style="width: 30px" />
           </button>
-        </div>
-      </div>
+        </div> -->
       <!-- Подвал  -->
       <div class="row">
         <div
