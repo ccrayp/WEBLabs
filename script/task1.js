@@ -35,5 +35,5 @@ function findData(cookieName) {
             return value;
         }
     }
-    return null; // Возвращаем null, если cookie не найден
+    return null;
 }

@@ -1,28 +1,20 @@
-const products = [
-    { id: 1, title: 'Samsung Galaxy', price: 50, image: '../images/gala.jpg' },
-    { id: 2, title: 'iPhone 12', price: 80, image: '../images/iphone.png' },
-    { id: 3, title: 'Huawei P30', price: 60, image: '../images/huawei.jpg' },
-    { id: 4, title: 'Xiaomi Redmi', price: 30, image: '../images/xiaomi.jpg' }
-
-];
+window.onload = function () {
+    const item = JSON.parse(localStorage.getItem('cart'));
+        // Проверяем, существует ли item и не является ли он пустой строкой
+        if (item.length !== 0) {  
+        card_storage.classList.replace('icon-remove_shopping_cart','icon-shopping_cart');
+        } 
+        else{
+          card_storage.classList.replace('icon-shopping_cart','icon-remove_shopping_cart');
+        }
+    };
 
 const productList = document.getElementById('product-list');
 const card_storage=document.getElementById('my_cart');
 
-window.onload = function () {
-const item = JSON.parse(localStorage.getItem('cart'));
-    // Проверяем, существует ли item и не является ли он пустой строкой
-    if (item.length !== 0) {  
-    card_storage.classList.replace('icon-remove_shopping_cart','icon-shopping_cart');
-    } 
-    else{
-      card_storage.classList.replace('icon-shopping_cart','icon-remove_shopping_cart');
-    }
-};
-
-function createProductCards(products) {
-    productList.innerHTML = ''; // Очищаем список перед выводом
-    products.forEach(product => {
+function fromCart() {
+    let cart = JSON.parse(localStorage.getItem('cart'))
+    cart.forEach(product => {
         const col = document.createElement('div');
         col.className = 'col-md-3 mb-4';
 
@@ -49,15 +41,8 @@ function createProductCards(products) {
         const addButton = document.createElement('button');
         addButton.className = 'btn btn-primary';
         addButton.setAttribute('data-id', product.id);
-
-        const isInCart = JSON.parse(localStorage.getItem('cart')).some(el => el.id === product.id);
-        if (isInCart) {
-            addButton.textContent = 'Убрать из корзины';
-            addButton.onclick = () => removeFromCart(addButton, product);
-        } else {
-            addButton.textContent = 'Добавить в корзину';
-            addButton.onclick = () => addToCart(addButton, product);
-        }
+        addButton.textContent = 'Убрать из корзины';
+        addButton.onclick = () => removeFromCart(addButton, product);
 
         card.appendChild(img);
         cardBody.appendChild(itemTitle);
@@ -67,24 +52,10 @@ function createProductCards(products) {
         col.appendChild(card);
 
         productList.appendChild(col);
-  });
+    });
 }
 
-function addToCart(btn, product) {
-    btn.textContent = 'Убрать из корзины';
-    btn.onclick = () => removeFromCart(btn, product);
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    
-    //alert(`Товар "${product.title}" добавлен в корзину!`);
-
-    if (card_storage.classList.contains('icon-remove_shopping_cart')) {
-        card_storage.classList.replace('icon-remove_shopping_cart', 'icon-shopping_cart');
-    }
-    card_storage.innerHTML = cart.length;
-}
+fromCart()
 
 function removeFromCart(btn, product) {
     btn.textContent = 'Добавить в корзину';
@@ -103,8 +74,22 @@ function removeFromCart(btn, product) {
     else
         card_storage.innerHTML = ''
 }
- 
-createProductCards(products);
+
+function addToCart(btn, product) {
+    btn.textContent = 'Убрать из корзины';
+    btn.onclick = () => removeFromCart(btn, product);
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    //alert(`Товар "${product.title}" добавлен в корзину!`);
+
+    if (card_storage.classList.contains('icon-remove_shopping_cart')) {
+        card_storage.classList.replace('icon-remove_shopping_cart', 'icon-shopping_cart');
+    }
+    card_storage.innerHTML = cart.length;
+}
 
 function checkCartContent() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];

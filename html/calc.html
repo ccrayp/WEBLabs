@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Bootstrap CSS -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/main.css" rel="stylesheet">
+      <link rel="stylesheet" href="fonts/icomoon/style.css">
+      <script src="js/bootstrap.bundle.min.js"></script>
+    <title>Калькулятор окраски</title>
+</head>
+<body>
+    <div class="col-8 bg-warning mt-5 offset-2 p-3">
+    <h1 class="text-center">Калькулятор окраски</h1>
+    <h2 class="mt-4">Выберите тип окраски:</h2>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="paint" id="paintType" value="ceiling">
+            <label class="form-check-label" for="ceiling">Окраска потолка</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="paint" id="walls" value="walls">
+            <label class="form-check-label" for="walls">Окраска стен</label>
+        </div>      
+    
+    <div id="inputFields" class="mt-4"></div>
+    <div id="inputWals" class="mt-4"></div>
+
+    <button id="calculate" class="btn btn-primary mt-3">Рассчитать площадь</button>
+    
+    <h2 id="result"></h2>
+    </div>
+    <script>
+             
+      const selected= document.getElementsByName('paint');   
+      const inputFields = document.getElementById('inputFields');
+      const inputWals = document.getElementById('inputWals');
+     
+      selected.forEach(choiceItem => {
+            choiceItem.addEventListener('click', () => show(choiceItem.value));
+        })
+        function  show(radio_value) { 
+            document.getElementById('result').innerText='';
+            inputFields.innerHTML = ''; // Очищаем предыдущие поля ввода
+            inputWals.innerHTML = '';
+       if (radio_value === 'ceiling') {
+        inputFields.innerHTML = `
+            <h2>Окраска потолка</h2>
+            <div class="form-group">
+            <label for="ceilingLength">Длина потолка (м):</label>
+            <input type="number" id="ceilingLength" min="0" required>
+            </div>
+            <div class="form-group mt-3">
+            <label for="ceilingWidth">Ширина потолка (м):</label>
+            <input type="number" id="ceilingWidth" min="0" required>
+            </div>
+        `;
+    } else {
+        inputFields.innerHTML = `
+            <h2>Окраска стен</h2>
+             <div class="form-group">
+            <label for="numberOfWalls">Количество стен:</label>
+            <input type="number" id="numberOfWalls" min="1" required onchange="calcWals(this.value);">
+            </div>
+            
+        `;
+    }
+};
+
+function  calcWals(num){
+    
+    var i=1;
+    for (var i = 1; i <= num; i++) {
+        inputWals.innerHTML = inputWals.innerHTML+`
+         <div class="form-group mt-3 pt-3"> 
+        <label for="wallLength">Длина стены ${i} (м):</label>
+        <input type="number" id="wallLength" min="0" required>
+        
+        <label for="wallHeight">Высота стены ${i} (м):</label>
+        <input type="number" id="wallHeight" min="0" required>
+        </div>
+        `
+     }
+}
+
+document.getElementById('calculate').addEventListener('click', function() {
+    const paintType = document.querySelector('input[name="paint"]:checked').value;
+    const inputwallHeight = document.querySelectorAll('#wallHeight');
+    const inputwallLength = document.querySelectorAll('#wallLength');
+
+    let area=0;
+    let length=0;
+    let width=0;
+    if (paintType === 'ceiling') {
+        length = parseFloat(document.getElementById('ceilingLength').value);
+        width = parseFloat(document.getElementById('ceilingWidth').value);
+        area = length * width;
+    } else { 
+        inputwallHeight.forEach((choiceItem) => width+=parseFloat(choiceItem.value));
+        inputwallLength.forEach((choiceItem) => length+=parseFloat(choiceItem.value))   
+       
+       
+
+       // const numberOfWalls = parseInt(document.getElementById('numberOfWalls').value);
+       // const wallLength = parseFloat(document.getElementById('wallLength').value);
+       // const wallHeight = parseFloat(document.getElementById('wallHeight').value);
+       // area = numberOfWalls * wallLength * wallHeight;
+    }
+    area = length * width;
+    if (Number.isNaN(area)) {
+    document.getElementById('result').innerText = `Не корректные данные`
+    } else {
+     document.getElementById('result').innerText = `Площадь для окраски: ${area} м²`;
+    }
+   
+})
+    </script>
+</body>
+</html>
