@@ -10,14 +10,16 @@ const productList = document.getElementById('product-list');
 const card_storage=document.getElementById('my_cart');
 
 window.onload = function () {
-const item = JSON.parse(localStorage.getItem('cart'));
-    // Проверяем, существует ли item и не является ли он пустой строкой
-    if (item.length !== 0) {  
-    card_storage.classList.replace('icon-remove_shopping_cart','icon-shopping_cart');
-    } 
-    else{
-      card_storage.classList.replace('icon-shopping_cart','icon-remove_shopping_cart');
-    }
+    const item = JSON.parse(localStorage.getItem('cart'));
+        // Проверяем, существует ли item и не является ли он пустой строкой
+        if (item.length !== 0) {  
+            card_storage.classList.replace('icon-remove_shopping_cart', 'icon-shopping_cart');
+            card_storage.innerHTML = cart.length;
+        } 
+        else{
+            card_storage.classList.replace('icon-shopping_cart', 'icon-remove_shopping_cart');
+            card_storage.innerHTML = ''
+        }        
 };
 
 function createProductCards(products) {
@@ -105,13 +107,3 @@ function removeFromCart(btn, product) {
 }
  
 createProductCards(products);
-
-function checkCartContent() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length)
-        card_storage.innerHTML = cart.length;
-    else
-        card_storage.innerHTML = ''
-}
-
-checkCartContent();

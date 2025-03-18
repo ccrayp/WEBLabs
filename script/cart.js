@@ -1,16 +1,19 @@
-window.onload = function () {
-    const item = JSON.parse(localStorage.getItem('cart'));
-        // Проверяем, существует ли item и не является ли он пустой строкой
-        if (item.length !== 0) {  
-        card_storage.classList.replace('icon-remove_shopping_cart','icon-shopping_cart');
-        } 
-        else{
-          card_storage.classList.replace('icon-shopping_cart','icon-remove_shopping_cart');
-        }
-    };
-
 const productList = document.getElementById('product-list');
 const card_storage=document.getElementById('my_cart');
+
+window.onload = function () {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+        if (cart.length !== 0) {  
+            card_storage.classList.replace('icon-remove_shopping_cart', 'icon-shopping_cart');
+            card_storage.innerHTML = cart.length;
+            fromCart()
+        } 
+        else{
+            card_storage.classList.replace('icon-shopping_cart', 'icon-remove_shopping_cart');
+            card_storage.innerHTML = ''
+            productList.innerHTML = 'Корзина пуста'
+        }        
+};
 
 function fromCart() {
     let cart = JSON.parse(localStorage.getItem('cart'))
@@ -55,8 +58,6 @@ function fromCart() {
     });
 }
 
-fromCart()
-
 function removeFromCart(btn, product) {
     btn.textContent = 'Добавить в корзину';
     btn.onclick = () => addToCart(btn, product);
@@ -90,13 +91,3 @@ function addToCart(btn, product) {
     }
     card_storage.innerHTML = cart.length;
 }
-
-function checkCartContent() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length)
-        card_storage.innerHTML = cart.length;
-    else
-        card_storage.innerHTML = ''
-}
-
-checkCartContent();
