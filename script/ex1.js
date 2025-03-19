@@ -64,54 +64,52 @@
       });
   }
 
-  function addToCart(product) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(product);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`Товар "${product.title}" добавлен в корзину!`); 
+  // function addToCart(product) {
+  //     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  //     cart.push(product);
+  //     localStorage.setItem('cart', JSON.stringify(cart));
+  //     alert(`Товар "${product.title}" добавлен в корзину!`); 
      
-      if (card_storage.classList.contains('icon-remove_shopping_cart') ){
-        card_storage.classList.replace('icon-remove_shopping_cart','icon-shopping_cart');
-      }
-      }
+  //     if (card_storage.classList.contains('icon-remove_shopping_cart') ){
+  //       card_storage.classList.replace('icon-remove_shopping_cart','icon-shopping_cart');
+  //     }
+  //     }
      
 createProductCards(products);
-// получение погоды с api https://api.openweathermap.org
-
-// async function getWeather() {
-//     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-//     try {
-//         const response = await fetch(url);
-//         if (!response.ok) {
-//             throw new Error('Ошибка при получении данных');
-//         }
-//         const data = await response.json();
-//         console.log(data); // выводим ответ api в консоль
-//         const weatherIcon = data.weather[0].icon;
-//         const iconUrl = `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
-//         displayWeather(iconUrl);
-//     } catch (error) {
-//         console.error(error.message);
-//     }
-// }
 
 const apiKey = '54ffc59ecbe71312af8b118a117408b2';
 const city = 'Velikiy Novgorod';
 
 async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    console.log(await fetch(url))
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Ошибка при получении данных');
+    }
+
+    const data = await response.json();
+    const weatherIcon = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    return [data.main.temp, iconUrl]
+    
+  } catch (error) {
+    console.error(error.message);
+    return[null, null]
+  }
 }
 
-getWeather();
-
-function displayWeather(iconUrl) {
-    const img = document.createElement('img');
-    img.src = iconUrl;
-    img.alt = 'Иконка погоды';
-    img.style="width: 25pt;";
-   
-   let  place=document.getElementById("weatherResult");
-    place.appendChild(img);
-    place.innerHTML = getWeather()
+async function displayWeather() {
+  const [temp, icon] = await getWeather()
+  const img = document.createElement('img');
+  img.src = icon
+  img.alt = 'Иконка погоды';
+  img.style="width: 25pt;";
+  
+  const place = document.getElementById("weatherResult");
+  place.appendChild(img);
+  place.innerHTML += temp + '°C'
 }
+
+displayWeather()
+setInterval(() => {displayWeather()}, 5 * 60* 1000)
