@@ -1,64 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Users (30+ years)</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Users (25+ years)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="../script/ex2.js" defer></script>
     <style>
-        .user-card {
-            margin-bottom: 20px;
-        }
+      .user-card {
+        margin-bottom: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Информация о пользователях старше 30 лет</h1>
-        <div class="row" id="user-list"></div>
+      <h1 class="text-center mb-4">Информация о пользователях старше 25 лет</h1>
+      <div class="row" id="user-list"></div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const userList = document.getElementById('user-list');
-
-    // Функция для загрузки данных о пользователях
-    async function loadUsers() {
-        const response = await fetch('https://randomuser.me/api/?results=20'); // Загружаем больше пользователей для фильтрации
-        const data = await response.json();
-        const usersOver30 = data.results.filter(user => user.dob.age > 30); // Фильтруем пользователей старше 30 лет
-        displayUsers(usersOver30.slice(0, 5)); // Отображаем первых 5 пользователей старше 30 лет
-    }
-
-    // Функция для отображения информации о пользователях
-    function displayUsers(users) {
-        userList.innerHTML = '';
-        if (users.length === 0) {
-            userList.innerHTML = '<p class="text-center">Нет пользователей старше 25 лет.</p>';
-            return;
-        }
-        users.forEach(user => {
-            const card = document.createElement('div');
-            card.className = 'col-md-6 user-card';
-            card.innerHTML = `
-                <div class="card">
-                    <img src="${user.picture.large}" class="card-img-top" alt="${user.name.first} ${user.name.last}">
-                    <div class="card-body">
-                        <h5 class="card-title">${user.name.title} ${user.name.first} ${user.name.last}</h5>
-                        <p class="card-text"><strong>Пол:</strong> ${user.gender}</p>
-                        <p class="card-text"><strong>Email:</strong> ${user.email}</p>
-                        <p class="card-text"><strong>Телефон:</strong> ${user.phone}</p>
-                        <p class="card-text"><strong>Адрес:</strong> ${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}</p>
-                        <p class="card-text"><strong>Дата рождения:</strong> ${new Date(user.dob.date).toLocaleDateString()}</p>
-                        <p class="card-text"><strong>Возраст:</strong> ${user.dob.age}</p>
-                    </div>
-                </div>
-            `;
-            userList.appendChild(card);
-        });
-    }
-
-    // Инициализация приложения
-    loadUsers();
-});
-    </script>
-</body>
+  </body>
 </html>
