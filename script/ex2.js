@@ -3,10 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Функция для загрузки данных о пользователях
     async function loadUsers() {
-        const response = await fetch('https://randomuser.me/api/?results=20'); // Загружаем больше пользователей для фильтрации
-        const {results} = await response.json();
-        const usersOver30 = results.filter(user => (user.dob.age > 25 && user.dob.age < 60)); // Фильтруем пользователей старше 25 лет
-        displayUsers(usersOver30.slice(0, 5)); // Отображаем первых 5 пользователей старше 25 лет
+        try {
+            const response = await fetch('https://randomuser.me/api/?results=20'); // Загружаем пользователей
+            if (!response.ok) {
+                throw new Error('Ошибка при получении данных');
+            }
+            const { results } = await response.json();
+            const users = results.filter(user => (user.dob.age > 25)); // Фильтруем пользователей старше 25 лет
+            displayUsers(users); // Отображаем пользователей старше 25 лет
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
     // Функция для отображения информации о пользователях

@@ -87,7 +87,6 @@ async function getWeather() {
     if (!response.ok) {
       throw new Error('Ошибка при получении данных');
     }
-
     const data = await response.json();
     const weatherIcon = data.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
@@ -112,4 +111,3 @@ async function displayWeather() {
 }
 
 displayWeather()
-setInterval(() => {displayWeather()}, 5 * 60* 1000)

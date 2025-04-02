@@ -10,9 +10,17 @@ let order = JSON.parse(localStorage.getItem('order')) || [];
 async function init() {
     let stored = localStorage.getItem('cocktails')
     if (!stored || stored === 'undefined' || stored === 'null') {
-        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail')
-        const data = await response.json()
-        localStorage.setItem('cocktails', JSON.stringify(data.drinks))
+        try {
+            const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail')
+            if (!response.ok) {
+                throw new Error('Ошибка при получении данных');
+            }
+            const data = await response.json()
+            localStorage.setItem('cocktails', JSON.stringify(data.drinks))
+        }
+        catch (error) {
+            console.error(error.message);
+        }
     }
     stored = localStorage.getItem('cocktails')
     if(stored !== 'undefined' && stored !== 'null')
