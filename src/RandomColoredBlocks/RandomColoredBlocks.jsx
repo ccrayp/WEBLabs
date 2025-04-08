@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
 import ToMain from "../ToMain.jsx";
 import "../index.css";
@@ -11,6 +11,7 @@ const StyledBlock = styled.div`
   margin: 10px;
   color: #fff;
   border-radius: 5px;
+  border: white 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +28,8 @@ const BlockContainer = styled.div`
   white-space: nowrap;
 `;
 
+const Button = styled.button``;
+
 function Block({ name, hex }) {
   return (
     <StyledBlock style={{ backgroundColor: hex }}>
@@ -35,15 +38,19 @@ function Block({ name, hex }) {
   );
 }
 
+function generateColors() {
+  let colors = [];
+  for (let i = 0; i < 5; i++) {
+    colors.push({
+      id: i,
+      hex: "#" + Math.floor(Math.random() * 16777215).toString(16),
+    });
+  }
+  return colors;
+}
+
 export default function Colored() {
-  const colors = [
-    { name: "Красный", hex: "#FF0000" },
-    { name: "Зеленый", hex: "#32CD32" },
-    { name: "Синий", hex: "#0000FF" },
-    { name: "Желтый", hex: "#FFFF00" },
-    { name: "Фиолетовый", hex: "#4B0082" },
-    { name: "Оранжевый", hex: "#FFA500" },
-  ];
+  const [colors, changeColor] = useState(generateColors());
 
   return (
     <div>
@@ -52,9 +59,12 @@ export default function Colored() {
         <h1>Цветные блоки</h1>
         <BlockContainer>
           {colors.map((element) => (
-            <Block key={element.hex} name={element.name} hex={element.hex} />
+            <Block key={element.hex} name={element.hex} hex={element.hex} />
           ))}
         </BlockContainer>
+        <Button onClick={() => changeColor(generateColors())}>
+          Сменить цвета
+        </Button>
       </Centered>
     </div>
   );
