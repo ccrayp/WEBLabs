@@ -12,7 +12,7 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import ToMain from "../ToMain.jsx";
-import "./css.css";
+import "../css.css";
 
 function TopBar() {
   return (

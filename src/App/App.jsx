@@ -26,10 +26,10 @@ export default function App() {
         <a href="./src/RandomColoredBlocks/randomColoredBlocks.html">
           <li>Цветные блоки с кнопкой</li>
         </a>
-        <a href="./jokes.html">
+        <a href="./src/CalcTest/calcTest.html">
           <li>Калькулятор и тест на одной странице</li>
         </a>
-        <a href="./jokes.html">
+        <a href="./src/Calc/calc.html">
           <li>Свой калькулятор</li>
         </a>
       </ol>

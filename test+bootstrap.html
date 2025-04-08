@@ -1,85 +1,100 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Тест на React</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="root" class="container mt-5"></div>
 
     <script type="text/babel">
-        const { useState } = React;
+      const { useState } = React;
 
-        const questions = [
-            {
-                question: "Какой язык используется для создания веб-страниц?",
-                options: ["HTML", "Python", "Java", "C++"],
-                answer: "HTML"
-            },
-            {
-                question: "Кто создал React?",
-                options: ["Google", "Facebook", "Microsoft", "Twitter"],
-                answer: "Facebook"
-            },
-            {
-                question: "Что такое JSX?",
-                options: ["Язык программирования", "Синтаксис", "Библиотека", "Препроцессор"],
-                answer: "Синтаксис"
-            }
-        ];
+      const questions = [
+        {
+          question: "Какой язык используется для создания веб-страниц?",
+          options: ["HTML", "Python", "Java", "C++"],
+          answer: "HTML",
+        },
+        {
+          question: "Кто создал React?",
+          options: ["Google", "Facebook", "Microsoft", "Twitter"],
+          answer: "Facebook",
+        },
+        {
+          question: "Что такое JSX?",
+          options: [
+            "Язык программирования",
+            "Синтаксис",
+            "Библиотека",
+            "Препроцессор",
+          ],
+          answer: "Синтаксис",
+        },
+      ];
 
-        const QuizApp = () => {
-            const [currentQuestion, setCurrentQuestion] = useState(0);
-            const [userAnswer, setUserAnswer] = useState('');
-            const [score, setScore] = useState(0);
-            const [finished, setFinished] = useState(false);
+      const QuizApp = () => {
+        const [currentQuestion, setCurrentQuestion] = useState(0);
+        const [userAnswer, setUserAnswer] = useState("");
+        const [score, setScore] = useState(0);
+        const [finished, setFinished] = useState(false);
 
-            const handleSubmit = () => {
-                if (userAnswer === questions[currentQuestion].answer) {
-                    setScore(score + 1);
-                }
+        const handleSubmit = () => {
+          if (userAnswer === questions[currentQuestion].answer) {
+            setScore(score + 1);
+          }
 
-                const nextQuestion = currentQuestion + 1;
-                if (nextQuestion < questions.length) {
-                    setCurrentQuestion(nextQuestion);
-                    setUserAnswer('');
-                } else {
-                    setFinished(true);
-                }
-            };
-
-            if (finished) {
-                return <h1 className="text-center">Ваш результат: {score} из {questions.length}</h1>;
-            }
-
-            return (
-                <div className="text-center">
-                    <h2>{questions[currentQuestion].question}</h2>
-                    {questions[currentQuestion].options.map((option) => (
-                        <div key={option} className="form-check">
-                            <input 
-                                type="radio" 
-                                className="form-check-input" 
-                                value={option} 
-                                checked={userAnswer === option}
-                                onChange={(e) => setUserAnswer(e.target.value)}
-                                id={option}
-                            />
-                            <label className="form-check-label" htmlFor={option}>{option}</label>
-                        
-                        </div>
-                    ))}
-                    <button className="btn btn-primary" onClick={handleSubmit}>Ответить</button>
-                </div>
-            );
+          const nextQuestion = currentQuestion + 1;
+          if (nextQuestion < questions.length) {
+            setCurrentQuestion(nextQuestion);
+            setUserAnswer("");
+          } else {
+            setFinished(true);
+          }
         };
 
-        ReactDOM.render(<QuizApp />, document.getElementById('root'));
+        if (finished) {
+          return (
+            <h1 className="text-center">
+              Ваш результат: {score} из {questions.length}
+            </h1>
+          );
+        }
+
+        return (
+          <div className="text-center">
+            <h2>{questions[currentQuestion].question}</h2>
+            {questions[currentQuestion].options.map((option) => (
+              <div key={option} className="form-check">
+                <input
+                  type="radio"
+                  className="form-check-input"
+                  value={option}
+                  checked={userAnswer === option}
+                  onChange={(e) => setUserAnswer(e.target.value)}
+                  id={option}
+                />
+                <label className="form-check-label" htmlFor={option}>
+                  {option}
+                </label>
+              </div>
+            ))}
+            <button className="btn btn-primary" onClick={handleSubmit}>
+              Ответить
+            </button>
+          </div>
+        );
+      };
+
+      ReactDOM.render(<QuizApp />, document.getElementById("root"));
     </script>
     <!--
      htmlFor={option} используется в React для связывания меток (label) с соответствующими элементами ввода (input),
@@ -115,5 +130,5 @@ function MyComponent() {
 и новое значение элемента можно получить через e.target.value. Это позволяет вам обновлять состояние, 
 например, для управления значением формы.
 -->
-</body>
+  </body>
 </html>
