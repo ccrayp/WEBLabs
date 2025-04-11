@@ -9,9 +9,9 @@ const StyledBlock = styled.div`
   height: 100px;
   width: 100px;
   margin: 10px;
-  color: #fff;
+  color: #000;
   border-radius: 5px;
-  border: white 1px solid;
+  border: black 1px solid;
   display: flex;
   align-items: center;
   justify-content: center;

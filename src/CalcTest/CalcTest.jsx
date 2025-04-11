@@ -1,14 +1,6 @@
 import { StrictMode, useState } from "react";
 import { createRoot } from "react-dom/client";
-import {
-  Container,
-  Card,
-  Form,
-  Button,
-  ListGroup,
-  InputGroup,
-  FormCheck,
-} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ToMain from "../ToMain.jsx";
 import "../css.css";
 
@@ -63,36 +55,46 @@ function QuizApp() {
 
   if (finished) {
     return (
-      <Container className="text-center my-5">
-        <h1>
-          Ваш результат: {score} из {questions.length}
-        </h1>
-        <Button onClick={reset}>Попробовать еще раз</Button>
-      </Container>
+        <div className="container text-center my-5">
+          <h1>
+            Ваш результат: {score} из {questions.length}
+          </h1>
+          <button className="btn btn-primary" onClick={reset}>
+            Попробовать еще раз
+          </button>
+        </div>
     );
   }
 
   return (
-    <Container className="text-center my-5">
-      <h2 className="mb-4">{questions[currentQuestion].question}</h2>
-      <ListGroup className="mb-4 col-6 offset-3">
-        {questions[currentQuestion].options.map((option) => (
-          <ListGroup.Item key={option}>
-            <FormCheck
-              type="radio"
-              name="quizOption"
-              label={option}
-              id={option}
-              checked={userAnswer === option}
-              onChange={() => setUserAnswer(option)}
-            />
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
-      <Button variant="primary" onClick={handleSubmit} className="mt-3">
-        Ответить
-      </Button>
-    </Container>
+      <div className="container text-center my-5">
+        <h2 className="mb-4">{questions[currentQuestion].question}</h2>
+        <ul className="list-group mb-4 col-6 offset-3">
+          {questions[currentQuestion].options.map((option) => (
+              <li key={option} className="list-group-item">
+                <div className="form-check">
+                  <input
+                      className="form-check-input"
+                      type="radio"
+                      name="quizOption"
+                      id={option}
+                      checked={userAnswer === option}
+                      onChange={() => setUserAnswer(option)}
+                  />
+                  <label className="form-check-label" htmlFor={option}>
+                    {option}
+                  </label>
+                </div>
+              </li>
+          ))}
+        </ul>
+        <button
+            className="btn btn-primary mt-3"
+            onClick={handleSubmit}
+        >
+          Ответить
+        </button>
+      </div>
   );
 }
 
@@ -108,68 +110,73 @@ function LoanCalculator() {
     const calculatedPayments = parseFloat(term) * 12;
 
     const payment =
-      (principal * calculatedInterest) /
-      (1 - Math.pow(1 + calculatedInterest, -calculatedPayments));
+        (principal * calculatedInterest) /
+        (1 - Math.pow(1 + calculatedInterest, -calculatedPayments));
     setMonthlyPayment(isNaN(payment) ? 0 : payment.toFixed(2));
   };
 
   return (
-    <Card className="p-3 col-md-6 mx-auto my-5">
-      <Card.Body>
-        <Card.Title className="text-center mb-4">
-          Калькулятор кредита
-        </Card.Title>
-        <Form>
-          <Form.Group className="mb-3">
-            <Form.Label>Сумма кредита</Form.Label>
-            <Form.Control
-              type="number"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Процентная ставка (%)</Form.Label>
-            <Form.Control
-              type="number"
-              value={interestRate}
-              onChange={(e) => setInterestRate(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Срок кредита (в годах)</Form.Label>
-            <Form.Control
-              type="number"
-              value={term}
-              onChange={(e) => setTerm(e.target.value)}
-            />
-          </Form.Group>
-          <div className="d-grid">
-            <Button variant="primary" onClick={calculatePayment}>
-              Рассчитать
-            </Button>
-          </div>
-        </Form>
-        <h3 className="mt-3 text-center">
-          Ежемесячный платеж: {monthlyPayment} ₽
-        </h3>
-      </Card.Body>
-    </Card>
+      <div className="card p-3 col-md-6 mx-auto my-5">
+        <div className="card-body">
+          <h5 className="card-title text-center mb-4">Калькулятор кредита</h5>
+          <form>
+            <div className="mb-3">
+              <label className="form-label">Сумма кредита</label>
+              <input
+                  type="number"
+                  className="form-control"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Процентная ставка (%)</label>
+              <input
+                  type="number"
+                  className="form-control"
+                  value={interestRate}
+                  onChange={(e) => setInterestRate(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Срок кредита (в годах)</label>
+              <input
+                  type="number"
+                  className="form-control"
+                  value={term}
+                  onChange={(e) => setTerm(e.target.value)}
+              />
+            </div>
+            <div className="d-grid">
+              <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={calculatePayment}
+              >
+                Рассчитать
+              </button>
+            </div>
+          </form>
+          <h3 className="mt-3 text-center">
+            Ежемесячный платеж: {monthlyPayment} ₽
+          </h3>
+        </div>
+      </div>
   );
 }
 
 export default function App() {
   return (
-    <Container fluid>
-      <ToMain />
-      <LoanCalculator />
-      <QuizApp />
-    </Container>
+      <div className="container-fluid">
+        <ToMain />
+        <LoanCalculator />
+        <QuizApp />
+      </div>
   );
 }
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+    <StrictMode>
+      <App />
+    </StrictMode>
 );
