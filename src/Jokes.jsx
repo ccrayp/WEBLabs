@@ -1,8 +1,7 @@
-import { StrictMode, useState } from "react";
-import { createRoot } from "react-dom/client";
-import ToMain from "../ToMain.jsx";
-import "../index.css";
+import { useState } from "react";
+import "./index.css";
 import styled from "styled-components";
+import ToMain from "./ToMain.jsx";
 
 const StyledJoke = styled.div`
   background-color: #f8f9fa;
@@ -41,7 +40,7 @@ function Joke({ question, punchLine }) {
   );
 }
 
-function Jokes() {
+export default function Jokes() {
   const jokes = [
     {
       question: "Почему программисты путают Хэллоуин и Рождество?",
@@ -70,7 +69,7 @@ function Jokes() {
   const [randomJoke, updateJoke] = useState(getRandomJoke());
   return (
     <div>
-      <ToMain />
+      <ToMain/>
       <CenterBlock>
         <h1>Сборник анекдотов для программистов</h1>
         <Joke question={randomJoke.question} punchLine={randomJoke.punchLine} />
@@ -81,9 +80,3 @@ function Jokes() {
     </div>
   );
 }
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Jokes />
-  </StrictMode>
-);

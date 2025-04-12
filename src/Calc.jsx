@@ -1,10 +1,8 @@
-import { StrictMode, useState, useEffect } from "react";
-import { createRoot } from "react-dom/client";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ToMain from "../ToMain.jsx";
-import "../css.css";
+import ToMain from "./ToMain.jsx";
+import { useState, useEffect } from "react";
+import "./css.css";
 
-function Calc() {
+export default function Calc() {
   const [squareInPackage, setSquareInPackage] = useState("");
   const [direction, setDirection] = useState("");
   const [method, setMethod] = useState("onSquare");
@@ -181,9 +179,3 @@ function Calc() {
     </>
   );
 }
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Calc />
-  </StrictMode>
-);

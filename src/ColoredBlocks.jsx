@@ -1,8 +1,5 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import ToMain from "../ToMain.jsx";
-import "../index.css";
 import styled from "styled-components";
+import ToMain from "./ToMain.jsx";
 
 const StyledBlock = styled.div`
   padding: 10px;
@@ -35,7 +32,7 @@ function Block({ name, hex }) {
   );
 }
 
-export default function Colored() {
+export default function ColoredBlocks() {
   const colors = [
     { name: "Красный", hex: "#FF0000" },
     { name: "Зеленый", hex: "#32CD32" },
@@ -59,9 +56,3 @@ export default function Colored() {
     </div>
   );
 }
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Colored />
-  </StrictMode>
-);

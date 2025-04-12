@@ -1,7 +1,5 @@
-import { StrictMode, useState } from "react";
-import { createRoot } from "react-dom/client";
-import ToMain from "../ToMain.jsx";
-import "../index.css";
+import ToMain from "./ToMain.jsx";
+import {useState} from "react";
 import styled from "styled-components";
 
 const StyledBlock = styled.div`
@@ -32,24 +30,25 @@ const Button = styled.button``;
 
 function Block({ name, hex }) {
   return (
-    <StyledBlock style={{ backgroundColor: hex }}>
-      <span>{name}</span>
-    </StyledBlock>
+      <StyledBlock style={{ backgroundColor: hex }}>
+        <span>{name}</span>
+      </StyledBlock>
   );
 }
 
-function generateColors() {
-  let colors = [];
-  for (let i = 0; i < 5; i++) {
-    colors.push({
-      id: i,
-      hex: "#" + Math.floor(Math.random() * 16777215).toString(16),
-    });
-  }
-  return colors;
-}
+export default function RandomColoredBlocks() {
 
-export default function Colored() {
+  function generateColors() {
+    let colors = [];
+    for (let i = 0; i < 5; i++) {
+      colors.push({
+        id: i,
+        hex: "#" + Math.floor(Math.random() * 16777215).toString(16),
+      });
+    }
+    return colors;
+  }
+
   const [colors, changeColor] = useState(generateColors());
 
   return (
@@ -69,9 +68,3 @@ export default function Colored() {
     </div>
   );
 }
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Colored />
-  </StrictMode>
-);

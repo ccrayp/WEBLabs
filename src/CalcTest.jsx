@@ -1,8 +1,6 @@
-import { StrictMode, useState } from "react";
-import { createRoot } from "react-dom/client";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ToMain from "../ToMain.jsx";
-import "../css.css";
+import ToMain from "./ToMain.jsx";
+import {useState} from "react";
+import "./css.css";
 
 const questions = [
   {
@@ -165,7 +163,7 @@ function LoanCalculator() {
   );
 }
 
-export default function App() {
+export default function CalcTest() {
   return (
       <div className="container-fluid">
         <ToMain />
@@ -174,9 +172,3 @@ export default function App() {
       </div>
   );
 }
-
-createRoot(document.getElementById("root")).render(
-    <StrictMode>
-      <App />
-    </StrictMode>
-);
