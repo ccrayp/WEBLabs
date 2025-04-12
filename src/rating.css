@@ -1,0 +1,36 @@
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s;
+}
+
+.star-btn.active {
+    color: #ffc107;
+    transform: scale(1.2);
+}
+
+.star-btn:hover {
+    transform: scale(1.3);
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+}

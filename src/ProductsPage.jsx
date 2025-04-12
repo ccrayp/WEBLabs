@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CocktailModal from './CocktailModal';
+import Rating from "./Rating.jsx";
 
 export default function ProductsPage() {
     const [cocktails, setCocktails] = useState([]);
     const [order, setOrder] = useState([]);
     const [selectedCocktail, setSelectedCocktail] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [showRating, setShowRating] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -48,6 +50,20 @@ export default function ProductsPage() {
             const data = await response.json();
             setSelectedCocktail(data.drinks[0]);
             setShowModal(true);
+        } catch (error) {
+            console.error("Error fetching details:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleShowRating = async (id) => {
+        try {
+            setIsLoading(true);
+            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+            const data = await response.json();
+            setSelectedCocktail(data.drinks[0]);
+            setShowRating(true);
         } catch (error) {
             console.error("Error fetching details:", error);
         } finally {
@@ -99,10 +115,16 @@ export default function ProductsPage() {
                                                 Добавить в заказ
                                             </button>
                                             <button
-                                                className="btn btn-outline-dark w-100"
+                                                className="btn btn-outline-dark w-100 mb-2"
                                                 onClick={() => handleShowDetails(cocktail.idDrink)}
                                             >
                                                 Подробнее
+                                            </button>
+                                            <button
+                                                className="btn btn-outline-dark w-100"
+                                                onClick={() => handleShowRating(cocktail.idDrink)}
+                                            >
+                                                Рейтинг
                                             </button>
                                         </div>
                                     </div>
@@ -117,6 +139,13 @@ export default function ProductsPage() {
                 <CocktailModal
                     cocktail={selectedCocktail}
                     onClose={() => setShowModal(false)}
+                />
+            )}
+
+            {showRating && selectedCocktail && (
+                <Rating
+                    cocktail={selectedCocktail}
+                    onClose={() => setShowRating(false)}
                 />
             )}
         </div>
