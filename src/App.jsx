@@ -7,6 +7,7 @@ import ContactPage from './ContactPage';
 import OrderPage from './OrderPage';
 import Header from './Header';
 import Navigation from './Navigation';
+import Calculator from './Calculator';
 
 export default function App() {
     return (
@@ -19,6 +20,7 @@ export default function App() {
                     <Route path="/products" element={<ProductsPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/order" element={<OrderPage />} />
+                    <Route path="/calculator" element={<Calculator />} />
                 </Routes>
         </BrowserRouter>
     );

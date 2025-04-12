@@ -53,6 +53,14 @@ export default function Navigation() {
                                 Контакты
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link
+                                to="/calculator"
+                                className={`nav-link ${location.pathname === '/calculator' ? 'active' : ''}`}
+                            >
+                                Калькулятор
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
